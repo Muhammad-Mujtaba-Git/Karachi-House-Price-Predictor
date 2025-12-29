@@ -2,7 +2,7 @@
 
 **A Machine Learning-powered web application that estimates apartment prices in Karachi based on real-time market data.**
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://[https://share.streamlit.io/user/muhammad-mujtaba-git])
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://[https://karachi-house-price-predictor-reva3zn2gqez2ij5ftt5et.streamlit.app/])
 
 ### 🚀 Try the Live App
 Click the badge above or visit: **[https://karachi-house-price-predictor-reva3zn2gqez2ij5ftt5et.streamlit.app/]**
