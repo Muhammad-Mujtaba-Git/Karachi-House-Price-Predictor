@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-model = joblib.load("house_price_model.pkl")
+model = joblib.load("Karachi_house_Prediction.pkl")
 neighborhoods = joblib.load("neighborhoods.pkl")
 
 MAE = 3300000
@@ -37,3 +37,4 @@ if st.button("Predict Price"):
     st.info(
         f"Expected Range: {format_price_pkr(lower)} to {format_price_pkr(upper)}"
     )
+
