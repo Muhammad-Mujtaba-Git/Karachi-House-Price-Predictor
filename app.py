@@ -120,34 +120,140 @@ st.markdown("""
         }
     }
     
+    /* Metric animations */
+    @keyframes countUp {
+        0% {
+            opacity: 0;
+            transform: translateY(20px) scale(0.9);
+        }
+        50% {
+            transform: translateY(-5px) scale(1.05);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+    
+    @keyframes pulse {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.02);
+        }
+    }
+    
+    /* Apply animation to metrics */
+    [data-testid="stMetric"] {
+        animation: countUp 0.6s ease-out;
+    }
+    
+    [data-testid="stMetric"]:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+    
+    [data-testid="stMetric"]:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+    
+    [data-testid="stMetric"]:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+    
+    /* Metric value animation on hover */
+    [data-testid="stMetricValue"] {
+        transition: all 0.3s ease;
+    }
+    
+    [data-testid="stMetric"]:hover [data-testid="stMetricValue"] {
+        animation: pulse 0.5s ease-in-out;
+    }
+    
     /* Watermark */
     .watermark {
         position: fixed;
         bottom: 10px;
         right: 20px;
-        color: rgba(0, 0, 0, 0.2);
+        color: rgba(0, 0, 0, 0.3);
         font-size: 11px;
         font-weight: 600;
-        z-index: 999;
+        z-index: 9999;
         pointer-events: none;
     }
+    
     /* Make text more readable */
     .stMarkdown, .stText {
         font-size: 15px !important;
         color: #1a1a1a !important;
     }
+    
     /* Compact metrics */
     [data-testid="stMetricValue"] {
         font-size: 20px !important;
         color: #1a1a1a !important;
     }
-    /* Input fields with better contrast */
-    .stTextInput input, .stNumberInput input, .stSelectbox select {
+    
+    /* FIXED: Input fields - force black text on PC and mobile */
+    .stTextInput input, 
+    .stNumberInput input, 
+    .stSelectbox select {
         background-color: rgba(255, 255, 255, 0.95) !important;
+        color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
+    }
+    
+    /* Dropdown text color fix */
+    .stSelectbox div[data-baseweb="select"] span {
+        color: #000000 !important;
+    }
+    
+    /* LIGHT/DARK MODE: Labels always visible */
+    [data-testid="stWidgetLabel"] {
+        color: #1a1a1a !important;
+        font-weight: 600 !important;
+    }
+    
+    [data-testid="stMetricLabel"] {
+        color: #1a1a1a !important;
+        font-weight: 600 !important;
+    }
+    
+    /* Dark mode adjustments */
+    @media (prefers-color-scheme: dark) {
+        .watermark {
+            color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .stTextInput input, 
+        .stNumberInput input, 
+        .stSelectbox select {
+            background-color: rgba(50, 50, 50, 0.95) !important;
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+        }
+        
+        .stSelectbox div[data-baseweb="select"] span {
+            color: #ffffff !important;
+        }
+        
+        [data-testid="stWidgetLabel"] {
+            color: #ffffff !important;
+        }
+        
+        [data-testid="stMetricLabel"] {
+            color: #ffffff !important;
+        }
+        
+        [data-testid="stMetricValue"] {
+            color: #ffffff !important;
+        }
     }
     </style>
-    <div class="watermark">© Muhammad Mujtaba</div>
 """, unsafe_allow_html=True)
+
+# Watermark HTML (moved outside CSS block)
+st.markdown('<div class="watermark">© Muhammad Mujtaba</div>', unsafe_allow_html=True)
 
 # Header
 st.title("Karachi House Price Predictor")
